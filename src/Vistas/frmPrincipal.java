@@ -27,29 +27,32 @@ public class frmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jmAdEm = new javax.swing.JMenu();
-        jmBuscEmp = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jmAgDisp = new javax.swing.JMenu();
+        jmEdDis = new javax.swing.JMenu();
+
+        jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jmAdEm.setText("Administrar Empleados ");
-        jMenuBar1.add(jmAdEm);
+        jmAgDisp.setText("Agregar dispositivos");
+        jMenuBar2.add(jmAgDisp);
 
-        jmBuscEmp.setText("Buscar Empleados");
-        jMenuBar1.add(jmBuscEmp);
+        jmEdDis.setText("Consultar dispositivos");
+        jMenuBar2.add(jmEdDis);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 540, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 453, Short.MAX_VALUE)
         );
 
         pack();
@@ -91,8 +94,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar jMenuBar1;
-    public javax.swing.JMenu jmAdEm;
-    public javax.swing.JMenu jmBuscEmp;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar2;
+    public javax.swing.JMenu jmAgDisp;
+    public javax.swing.JMenu jmEdDis;
     // End of variables declaration//GEN-END:variables
 }

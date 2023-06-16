@@ -1,5 +1,5 @@
-import Controladores.EmpleadosController;
-import Modelos.EmpleadosModel;
+import Controladores.DispositivosController;
+import Modelos.DispositivosModel;
 import Vistas.*;
 
 public class main {
@@ -8,10 +8,10 @@ public class main {
         // TODO code application logic here
         frmPrincipal VistaPrincipal = new frmPrincipal();
         frmConsulta VistaConsulta = new frmConsulta(VistaPrincipal, true);
-        EmpleadosModel ModeloEmpleados = new EmpleadosModel();
-        frmEmpleados VistaEmpleados = new frmEmpleados(VistaPrincipal,true);
+        DispositivosModel ModeloEmpleados = new DispositivosModel();
+        frmDispositivos VistaEmpleados = new frmDispositivos(VistaPrincipal,true);
         
-        EmpleadosController ControladorEmpleados = new EmpleadosController(VistaEmpleados, VistaPrincipal, VistaConsulta, ModeloEmpleados);
+        DispositivosController ControladorEmpleados = new DispositivosController(VistaEmpleados, VistaPrincipal, VistaConsulta, ModeloEmpleados);
         
     }
     

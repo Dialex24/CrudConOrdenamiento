@@ -5,7 +5,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class EmpleadosModel {
+public class DispositivosModel {
 Connection MyConexion;
 ResultSet result;
 
@@ -21,22 +21,22 @@ public DefaultTableModel ListarDatos()
     
     //prepara ek modelo de la tabla
     
-        TablaModelo.addColumn("CODIGO");
-    TablaModelo.addColumn("APELLIDO");
-    TablaModelo.addColumn("NOMBRE");
-    TablaModelo.addColumn("TELEFONO");
+        TablaModelo.addColumn("DISPOSITIVO");
+    TablaModelo.addColumn("MARCA");
+    TablaModelo.addColumn("TIPO");
+    TablaModelo.addColumn("PRECIO");
     
     try
     {
         Conexion nuevaConexion = new Conexion();
         MyConexion = nuevaConexion.Conectar();
         Statement sentencia = MyConexion.createStatement();
-        result = sentencia.executeQuery("select * from empleados");  
+        result = sentencia.executeQuery("select * from dispositivos");  
        //return result;
        
        while(result.next())
        {
-           TablaModelo.addRow(new Object[]{result.getInt("codigo"), result.getString("apellido"), result.getString("nombre"), result.getString("telefono")});
+           TablaModelo.addRow(new Object[]{result.getString("dispositivo"), result.getString("marca"), result.getString("tipo"), result.getInt("precio")});
        }
        return TablaModelo;
     }
@@ -44,20 +44,20 @@ public DefaultTableModel ListarDatos()
     
     catch(SQLException e)
     {
-        JOptionPane.showMessageDialog(null, "No se Pudo Listar Empleados...."+e.getMessage());
+        JOptionPane.showMessageDialog(null, "No se Pudo Listar Dispositivos...."+e.getMessage());
         return TablaModelo;
     }
 }
 
 
-public void Actualizar(int codigo, String apellido, String nombre, String telefono)
+public void Actualizar(String dispositivos, String marca, String tipo, int precio)
 {
         try
         {
           Conexion nuevaConexion = new Conexion();
         MyConexion = nuevaConexion.Conectar();
         Statement sentencia = MyConexion.createStatement();
-        sentencia.executeQuery("Update empleados set apellido ="+"'"+apellido+"',nombre="+"'"+nombre+"',telefono="+"'"+telefono+"' where codigo="+"'"+codigo+"'");
+        sentencia.executeQuery("Update dispositivos set marca ="+"'"+marca+"',tipo="+"'"+tipo+"',precio="+"'"+precio+"' where dispositivo="+"'"+dispositivos+"'");
         }
         catch(SQLException ex)
         {
@@ -67,14 +67,14 @@ public void Actualizar(int codigo, String apellido, String nombre, String telefo
           
 }
 
-public void Guardar(int codigo, String apellido, String nombre, String telefono)
+public void Guardar(String dispositivo, String marca, String tipo, int precio)
 {
      try
         {
           Conexion nuevaConexion = new Conexion();
         MyConexion = nuevaConexion.Conectar();
         Statement sentencia = MyConexion.createStatement();
-        sentencia.executeQuery("Insert into empleados values ("+"'"+codigo+"',"+"'"+apellido+"',"+"'"+nombre+"',"+"'"+telefono+"')");
+        sentencia.executeQuery("Insert into dispositivos values ("+"'"+dispositivo+"',"+"'"+marca+"',"+"'"+tipo+"',"+"'"+precio+"')");
         }
         catch(SQLException ex)
         {
@@ -84,14 +84,14 @@ public void Guardar(int codigo, String apellido, String nombre, String telefono)
      
     }
 
-    public void Eliminar(int codEliminar) throws SQLException
+    public void Eliminar(String dispEliminar) throws SQLException
      {
          try
         {
           Conexion nuevaConexion = new Conexion();
         MyConexion = nuevaConexion.Conectar();
         Statement sentencia = MyConexion.createStatement();
-        sentencia.executeQuery("Delete from empleados where codigo="+"'"+codEliminar+"'");
+        sentencia.executeQuery("Delete from dispositivos where dispositivo="+"'"+dispEliminar+"'");
         }
         catch(SQLException ex)
         {
@@ -108,22 +108,22 @@ public DefaultTableModel Consultar(String consulta)
     
     //prepara ek modelo de la tabla
     
-    TablaModelo1.addColumn("CODIGO");
-    TablaModelo1.addColumn("APELLIDO");
-    TablaModelo1.addColumn("NOMBRES");
-    TablaModelo1.addColumn("TELEFONO");
+    TablaModelo1.addColumn("DISPOSITIVO");
+    TablaModelo1.addColumn("MARCA");
+    TablaModelo1.addColumn("TIPO");
+    TablaModelo1.addColumn("PRECIO");
     
     try
     {
         Conexion nuevaConexion = new Conexion();
         MyConexion = nuevaConexion.Conectar();
         Statement sentencia = MyConexion.createStatement();
-        result = sentencia.executeQuery(consulta);  
+        result = sentencia.executeQuery("select * FROM dispositivos WHERE tipo ="+"'"+consulta+"'");  
        //return result;
        
        while(result.next())
        {
-           TablaModelo1.addRow(new Object[]{result.getInt("codigo"), result.getString("apellido"), result.getString("nombre"), result.getString("telefono")});
+           TablaModelo1.addRow(new Object[]{result.getString("dispositivo"), result.getString("marca"), result.getString("tipo"), result.getInt("precio")});
        }
        return TablaModelo1;
     }
@@ -131,7 +131,7 @@ public DefaultTableModel Consultar(String consulta)
     
     catch(SQLException e)
     {
-        JOptionPane.showMessageDialog(null, "No se Pudo Consultar Empleado...."+e.getMessage());
+        JOptionPane.showMessageDialog(null, "No se Pudo Consultar Dispositivos...."+e.getMessage());
         return TablaModelo1;
     }
    }
